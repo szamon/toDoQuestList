@@ -57,14 +57,23 @@ var deleteQuest = function() {
 
 var questCompleted = function() {
   var liItem = this.parentNode;
+  checkBoxUnEditter.call(this);
   completedQuestsContainer.appendChild(liItem);
   bindQuestEvents(liItem, questIncomplete);
 }
 
 var questIncomplete = function() {
   var liItem = this.parentNode;
+  checkBoxUnEditter.call(this);
   incompleteQuestsContainer.appendChild(liItem);
   bindQuestEvents(liItem, questCompleted);
+}
+
+var checkBoxUnEditter = function(){
+  var liItem = this.parentNode;
+  if(liItem.classList.contains("editMode")){
+    liItem.classList.remove("editMode");
+  };
 }
 
 var bindQuestEvents = function(questLiItem, checkBoxEventHandler) {
